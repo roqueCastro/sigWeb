@@ -1,12 +1,12 @@
 
 $(document).ready(function() {
     
-  Listar_Tipo_Tipo_Pregunta();
-  Listar_Tipos_Encuestas();
-    
-  Cargar_Data_Table();
+    Listar_Tipo_Tipo_Pregunta();
+    // Listar_Tipos_Encuestas();
+      
+   // Cargar_Data_Table();
 
-$("#Frm_Reg_Preguntas").hide();
+  // $("#Frm_Reg_Preguntas").hide();
 
 
 } );
@@ -204,14 +204,29 @@ function Registrar_Pregunta() {
  //LISTA TODOS LOS TIPOS DE PREGUNTAS
 function Listar_Tipo_Tipo_Pregunta(){
 
-  // $('#msg').html("<center><img src='Iconos/barra.gif' width='30' height='30' ></center>"); 
-                 	$.post('Cont_Pregunta', {
-                        Listar_Tipos_Preguntas : "Listar_Tipos_Preguntas"
-			}, function(responseText) {
-                    
-                        $('#tipo_pregunta').html(responseText);
-                       // $('#msg').html(""); 
-			});        
+  $.ajax({
+      url : 'Controladores/Control_Tipo_Pregunta.php',
+      data : { Operacion : 'Listar_Tipo_Pregunta' },
+      type : 'POST',
+      dataType : 'json',
+      success : function(datos) {
+  alert(datos);
+
+           // $('#tipo_pregunta').html(datos);   
+      },
+      error : function(xhr, status) {
+        alert('Disculpe, existió un problema');
+          // $('#msg').html();
+      },
+      // código a ejecutar sin importar si la petición falló o no
+      complete : function(xhr, status) {
+
+         $('#msg').html('Se listaron todos los eventos..');
+
+    }
+});
+
+        
 }
 
 

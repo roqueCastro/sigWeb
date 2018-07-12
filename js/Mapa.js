@@ -79,16 +79,6 @@ $.ajax({
 
     }
 });
-
-
-
-
-
-
-
-
-
-
   
 }// fin del metodo Listar_Todos_Eventos
 
