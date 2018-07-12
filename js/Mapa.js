@@ -148,7 +148,7 @@ $.post('Controladores/Control_Evento.php', {
            },
             function (responseText) {
   
-             alert(responseText);
+             alert('tonces Roque');
           //   Listar_Todos_Eventos();  
                
             }); 
