@@ -6,7 +6,7 @@ try {
 
     $tipo_pregunta = new Tipo_Pregunta();
 
-    $operacion = "Listar_Tipo_Pregunta";
+    $operacion = $_POST['Operacion'];
 
     /*  if ($operacion == "r_Tipo_Pregunta") {
 
