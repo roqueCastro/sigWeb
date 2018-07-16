@@ -15,17 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
-
-
-
-
-
-
     <title>Registrar Pregunta</title>
-
-
-
 </head>
 
   <div class="container-fluid">
@@ -73,7 +63,6 @@
                                                     <label>Tipo de Pregunta</label>
                                                     <div>
                                                         <select id="tipo_pregunta" class="form-control">
-
                                                         </select>
                                                     </div>
                                                 </div>

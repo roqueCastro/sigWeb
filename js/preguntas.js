@@ -1,6 +1,6 @@
 $(document).ready(function() {
     Listar_Tipo_Tipo_Pregunta();
-    // Listar_Tipos_Encuestas();
+    Listar_Tipos_Encuestas();
     // Cargar_Data_Table();
     // $("#Frm_Reg_Preguntas").hide();
 });
@@ -111,7 +111,9 @@ function Registrar_Pregunta() {
         Cargar_Data_Table();
     });
 }
-// ENDS GUARDA TODAS LAS PREGUNTAS
+// 
+////
+//
 //LISTA TODOS LOS TIPOS DE PREGUNTAS
 function Listar_Tipo_Tipo_Pregunta() {
     $.ajax({
@@ -122,8 +124,13 @@ function Listar_Tipo_Tipo_Pregunta() {
         type: 'POST',
         dataType: 'json',
         success: function(datos) {
-            alert(datos);
-            // $('#tipo_pregunta').html(datos);   
+            //creamos el ciclo para recorrer el json y creamos la variable
+            // tipo_pre de tipo string y la imprimimos en el select de tipo pregunta
+            var tipo_pre = '';
+            for (var i = 0; i < datos.length; i++) {
+                tipo_pre += '<option value="' + datos[i].id_tipo_pgta + '">' + datos[i].nomb_tipo_pgta + '</option>';
+            }
+            $('#tipo_pregunta').html(tipo_pre);
         },
         error: function(xhr, status) {
             alert('Disculpe, existió un problema');
@@ -135,12 +142,34 @@ function Listar_Tipo_Tipo_Pregunta() {
         }
     });
 }
-
+//
+////
+////
+//  Listar_Tipos_Encuestas
 function Listar_Tipos_Encuestas() {
-    // $('#msg').html("<center><img src='Iconos/barra.gif' width='30' height='30' ></center>"); 
-    $.post('Cont_Pregunta', {
-        Listar_Tipos_Encuestas: "Listar_Tipos_Encuestas"
-    }, function(responseText) {
-        $('#encuesta').html(responseText);
+    $.ajax({
+        url: 'Controladores/Control_Encuesta.php',
+        data: {
+            Operacion: 'Listar_Tipos_Encuestas'
+        },
+        type: 'POST',
+        dataType: 'json',
+        success: function(datos) {
+            //creamos el ciclo para recorrer el json y creamos la variable
+            // tipo_pre de tipo string y la imprimimos en el select de tipo pregunta
+            var dato_imprimir = '';
+            for (var i = 0; i < datos.length; i++) {
+                dato_imprimir += '<option value="' + datos[i].id_encuesta + '">' + datos[i].nomb_encta + '</option>';
+            }
+            $('#encuesta').html(dato_imprimir);
+        },
+        error: function(xhr, status) {
+            alert('Disculpe, existió un problema');
+            // $('#msg').html();
+        },
+        // código a ejecutar sin importar si la petición falló o no
+        complete: function(xhr, status) {
+            $('#msg').html('Se listaron todos los eventos..');
+        }
     });
 }

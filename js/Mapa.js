@@ -57,7 +57,7 @@ function Buscar_Eventos_bd(datos) {
             idMarcador: datos[i].id_evento,
             position: punto,
             map: mapa,
-            animation: google.maps.Animation.DROP,
+            animation: google.maps.Animation.BOUNCE,
             drapggable: false,
             titulo: datos[i].id_evento
         });
